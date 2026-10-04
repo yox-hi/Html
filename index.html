@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaizen Studio — Automatiza los procesos de tu negocio</title>
+<meta name="theme-color" content="#0f766e">
+<script>document.documentElement.className+=" js"</script>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kaizen Studio — Deja de perder horas en tareas repetitivas">
+<meta property="og:description" content="Piloto desde S/ 49. Automatizo tu tarea más repetitiva y la mejoro cada mes.">
+<meta property="og:locale" content="es_PE">
+<meta property="og:site_name" content="Kaizen Studio">
+<!-- URL pública viva de GitHub Pages. WhatsApp y Facebook solo muestran la vista
+     previa si la imagen va con URL absoluta. -->
+<link rel="canonical" href="https://yox-hi.github.io/Html/">
+<meta property="og:url" content="https://yox-hi.github.io/Html/">
+<meta property="og:image" content="https://yox-hi.github.io/Html/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kaizen Studio — Recupera las horas que tu negocio pierde en tareas repetitivas">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Cpath d='M18 34l10 10 18-22' fill='none' stroke='white' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f7f8f6; --surface:#ffffff; --surface-2:#eef2ef;
+  --text:#14201d; --muted:#4b5a55; --line:#dbe3df;
+  --accent:#0f766e; --accent-strong:#0b5b55; --accent-soft:#d8efeb; --on-accent:#ffffff;
+  --warn:#b45309;
+  --radius:18px; --radius-sm:12px;
+  --shadow:0 1px 2px rgba(20,32,29,.06),0 8px 24px rgba(20,32,29,.07);
+  --shadow-lg:0 2px 4px rgba(20,32,29,.08),0 20px 48px rgba(20,32,29,.12);
+  --font:"Inter","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --fs-h1:clamp(2.1rem,6vw,3.6rem); --fs-h2:clamp(1.6rem,4vw,2.3rem); --fs-h3:1.15rem;
+  --wrap:1120px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0c1311; --surface:#121b18; --surface-2:#172420;
+    --text:#eaf1ee; --muted:#a3b3ad; --line:#24332e;
+    --accent:#2dd4bf; --accent-strong:#5eead4; --accent-soft:#12312d; --on-accent:#04201c;
+    --warn:#fbbf24;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+    --shadow-lg:0 2px 4px rgba(0,0,0,.5),0 20px 48px rgba(0,0,0,.45);
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.65;font-size:1.0625rem;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(100% - 2.5rem,var(--wrap));margin-inline:auto}
+.skip{position:absolute;left:-999px;top:0;background:var(--accent);color:var(--on-accent);padding:.75rem 1rem;z-index:100;border-radius:0 0 var(--radius-sm) 0}
+.skip:focus{left:0}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:48px;padding:.85rem 1.5rem;border-radius:999px;font-weight:650;font-size:1rem;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-primary{background:var(--accent);color:var(--on-accent);box-shadow:0 6px 18px color-mix(in srgb,var(--accent) 35%,transparent)}
+.btn-primary:hover{background:var(--accent-strong);transform:translateY(-2px)}
+.btn-primary:active{transform:translateY(0)}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Cabecera */
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:68px}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:800;text-decoration:none;letter-spacing:-.01em}
+.brand-mark{width:34px;height:34px}
+.nav-links{display:none;gap:1.75rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-weight:550;font-size:.97rem}
+.nav-links a:hover{color:var(--text)}
+.nav .btn{min-height:44px;padding:.55rem 1.1rem;font-size:.95rem}
+
+/* Héroe */
+.hero{padding:clamp(3rem,8vw,6rem) 0 clamp(2.5rem,6vw,4.5rem);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:min(680px,90vw);aspect-ratio:1;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 22%,transparent),transparent);filter:blur(10px);z-index:-1}
+.hero-grid{display:grid;gap:2.5rem;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent-soft);color:var(--accent-strong);font-weight:700;font-size:.85rem;padding:.4rem .9rem;border-radius:999px;margin-bottom:1.25rem}
+[data-theme] .eyebrow{color:var(--accent-strong)}
+h1{font-size:var(--fs-h1);line-height:1.08;letter-spacing:-.03em;font-weight:850}
+h1 em{font-style:normal;color:var(--accent)}
+.lead{font-size:clamp(1.05rem,2.4vw,1.25rem);color:var(--muted);margin-top:1.25rem;max-width:34rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2rem}
+.micro{margin-top:1.1rem;color:var(--muted);font-size:.92rem;display:flex;flex-wrap:wrap;gap:.4rem 1.25rem}
+.micro span{display:inline-flex;align-items:center;gap:.4rem}
+.micro svg{width:16px;height:16px;color:var(--accent)}
+
+/* Tarjeta de demostración (antes / después) */
+.demo{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:1.5rem;position:relative}
+.demo-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;font-size:.85rem;color:var(--muted);font-weight:650}
+.demo-tag{background:var(--surface-2);padding:.25rem .65rem;border-radius:999px}
+.bars{display:grid;gap:1rem}
+.bar-label{display:flex;justify-content:space-between;font-weight:650;font-size:.95rem;margin-bottom:.4rem}
+.bar{height:14px;background:var(--surface-2);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:999px;width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.bar.before i{background:linear-gradient(90deg,#f59e0b,#ef4444)}
+.bar.after i{background:linear-gradient(90deg,var(--accent),#34d399)}
+.demo.in .bar.before i,html:not(.js) .bar.before i{width:92%}
+.demo.in .bar.after i,html:not(.js) .bar.after i{width:18%}
+.demo-note{margin-top:1.1rem;font-size:.85rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:.9rem}
+
+/* Secciones */
+section{padding:clamp(3rem,7vw,5.5rem) 0}
+.section-head{max-width:40rem;margin-bottom:2.5rem}
+.kicker{color:var(--accent);font-weight:750;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.6rem}
+h2{font-size:var(--fs-h2);line-height:1.15;letter-spacing:-.02em;font-weight:820}
+.sub{color:var(--muted);margin-top:.9rem}
+.grid{display:grid;gap:1.25rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;box-shadow:var(--shadow);transition:transform .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.icon{width:48px;height:48px;border-radius:14px;background:var(--accent-soft);color:var(--accent-strong);display:grid;place-items:center;margin-bottom:1rem}
+.icon svg{width:26px;height:26px}
+h3{font-size:var(--fs-h3);margin-bottom:.4rem;letter-spacing:-.01em}
+.card p{color:var(--muted);font-size:.98rem}
+.alt{background:var(--surface-2)}
+.problem .card{border-left:4px solid var(--warn)}
+
+/* Pasos */
+.steps{counter-reset:s;display:grid;gap:1.25rem}
+.step{position:relative;padding-left:4.25rem}
+.step::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:3rem;height:3rem;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-weight:800;font-size:1.2rem}
+.step p{color:var(--muted)}
+
+/* Precios */
+.prices{align-items:stretch}
+.price{display:flex;flex-direction:column}
+.price.featured{border:2px solid var(--accent);position:relative;box-shadow:var(--shadow-lg)}
+.badge{position:absolute;top:-14px;left:1.4rem;background:var(--accent);color:var(--on-accent);font-size:.78rem;font-weight:800;padding:.3rem .8rem;border-radius:999px}
+.card .amount{font-size:2.8rem;font-weight:850;letter-spacing:-.03em;line-height:1.1;color:var(--text);margin:.7rem 0 .4rem}
+.card .amount small{font-size:1rem;font-weight:600;color:var(--muted);letter-spacing:0}
+.price ul{list-style:none;margin:1.1rem 0 1.5rem;display:grid;gap:.65rem;flex:1}
+.price li{display:flex;gap:.6rem;color:var(--muted);font-size:.98rem}
+.price li svg{width:20px;height:20px;color:var(--accent);flex:none;margin-top:3px}
+.note{margin-top:1.5rem;color:var(--muted);font-size:.92rem;text-align:center}
+
+/* Preguntas */
+.faq{max-width:46rem;display:grid;gap:.9rem}
+details{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:0}
+summary{cursor:pointer;list-style:none;padding:1.15rem 1.4rem;font-weight:700;display:flex;justify-content:space-between;gap:1rem;align-items:center;min-height:48px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.5rem;line-height:1;color:var(--accent);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 1.4rem 1.3rem;color:var(--muted)}
+
+/* CTA final */
+.final{background:linear-gradient(135deg,var(--accent-strong),var(--accent));color:var(--on-accent);border-radius:calc(var(--radius) + 6px);padding:clamp(2rem,6vw,4rem);text-align:center;box-shadow:var(--shadow-lg)}
+.final h2{color:inherit}
+.final p{margin:1rem auto 1.75rem;max-width:34rem;opacity:.92}
+.final .btn-primary{background:var(--surface);color:var(--accent-strong);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.final .btn-primary:hover{background:var(--bg)}
+@media (prefers-color-scheme:dark){.final{color:#04201c}.final .btn-primary{background:#04201c;color:var(--accent-strong)}}
+
+footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted);font-size:.92rem}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2rem}
+.foot-col{display:grid;gap:.25rem}
+.foot-links{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem 1.5rem}
+.foot-links a{text-decoration:none}
+.foot-links a:hover{color:var(--accent);text-decoration:underline}
+[hidden]{display:none!important}
+
+/* Casos reales */
+.cases{align-items:stretch}
+.case{display:flex;flex-direction:column}
+.case-shots{position:relative;margin:0 0 1.6rem;padding-right:18%}
+.case-shots img{width:100%;height:auto;border-radius:var(--radius-sm);border:1px solid var(--line);box-shadow:var(--shadow)}
+.case-shots .case-phone{position:absolute;right:0;bottom:-1rem;width:30%;border-radius:14px;box-shadow:var(--shadow-lg)}
+.case-list{list-style:none;display:grid;gap:.55rem;margin-top:.6rem}
+.case-list li{display:flex;gap:.6rem;color:var(--muted);font-size:.97rem}
+.case-list svg{width:20px;height:20px;color:var(--accent);flex:none;margin-top:3px}
+.case-chat{position:relative;display:flex;flex-direction:column;gap:.55rem;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:1.1rem 1rem 2.6rem;margin-bottom:1.6rem;font-size:.93rem}
+.msg{max-width:82%;padding:.55rem .85rem;border-radius:14px;line-height:1.45}
+.msg.in{align-self:flex-start;background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:4px}
+.msg.out{align-self:flex-end;background:var(--accent-soft);color:var(--text);border-bottom-right-radius:4px}
+.case-tag{position:absolute;left:1rem;bottom:.8rem;font-size:.75rem;color:var(--muted)}
+
+/* WhatsApp flotante */
+.wa-float{position:fixed;right:16px;bottom:16px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform .18s}
+.wa-float:hover{transform:scale(1.07)}
+.wa-float svg{width:30px;height:30px}
+
+/* Aparecer al hacer scroll */
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.js .reveal.in{opacity:1;transform:none}
+
+@media (min-width:720px){
+  .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:920px){
+  .nav-links{display:flex}
+  .hero-grid{grid-template-columns:1.1fr .9fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+  .demo .bar.before i{width:92%}.demo .bar.after i{width:18%}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#inicio" aria-label="Kaizen Studio, inicio">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0f766e"/><path d="M18 34l10 10 18-22" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Kaizen Studio
+    </a>
+    <ul class="nav-links">
+      <li><a href="#casos">Casos</a></li>
+      <li><a href="#problema">El problema</a></li>
+      <li><a href="#como">Cómo funciona</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li><a href="#preguntas">Preguntas</a></li>
+    </ul>
+    <a class="btn btn-primary" data-wa="Hola, quiero saber más sobre Kaizen Studio para mi negocio." href="#">Escríbeme</a>
+  </div>
+</header>
+
+<main id="contenido">
+
+<!-- HÉROE -->
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Piloto desde S/ 49 · Sin contrato</span>
+      <h1>Recupera las horas que tu negocio pierde en <em>tareas repetitivas</em></h1>
+      <p class="lead">Automatizo la tarea que más tiempo te quita —cierres de caja, cobros, reportes, avisos— y la mejoro cada mes con el método Kaizen, paso a paso.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" data-wa="Hola, quiero el piloto de S/ 49 para mi negocio." href="#">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.5.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>
+          Pedir mi piloto por WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="#como">Ver cómo funciona</a>
+      </div>
+      <p class="micro">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Resultado en 7 días</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Sin permanencia</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Atención por WhatsApp</span>
+      </p>
+    </div>
+
+    <aside class="demo" id="demo" aria-label="Ejemplo ilustrativo de mejora">
+      <div class="demo-head"><span>Ejemplo: cierre de caja semanal</span><span class="demo-tag">Ilustrativo</span></div>
+      <div class="bars">
+        <div>
+          <div class="bar-label"><span>Antes (a mano)</span><span>≈ 3 horas</span></div>
+          <div class="bar before" role="img" aria-label="Antes: unas 3 horas"><i></i></div>
+        </div>
+        <div>
+          <div class="bar-label"><span>Después (automatizado)</span><span>≈ 20 min</span></div>
+          <div class="bar after" role="img" aria-label="Después: unos 20 minutos"><i></i></div>
+        </div>
+      </div>
+      <p class="demo-note">Ejemplo ilustrativo del tipo de mejora que buscamos. Tu caso real lo medimos juntos en el piloto.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- CASOS REALES: sistemas propios en funcionamiento, con capturas reales. -->
+<!-- [COMPLETAR cuando lo tengas: testimonio o resultado medido de un cliente, con su permiso] -->
+<section id="casos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">Hecho por mí, funcionando hoy</p>
+      <h2>No son maquetas: son sistemas que ya están en uso</h2>
+      <p class="sub">Esto es lo que construí y mantengo. Lo mismo puedo adaptarlo a tu negocio.</p>
+    </div>
+    <div class="grid cols-2 cases">
+      <article class="card case reveal">
+        <figure class="case-shots">
+          <img src="img/caso-jp-online-tienda.webp" width="960" height="570" loading="lazy" decoding="async"
+               alt="Tienda online JP Online: portada con buscador y catálogo de productos">
+          <img class="case-phone" src="img/caso-jp-online-checkout.webp" width="390" height="700" loading="lazy" decoding="async"
+               alt="Pedido desde el celular: resumen con delivery calculado por distancia, datos de contacto y elección entre delivery o contraentrega">
+        </figure>
+        <h3>JP Online · tienda con pedidos por web y WhatsApp</h3>
+        <ul class="case-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Catálogo online y pedidos desde el celular, con delivery por distancia o contraentrega</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Un bot de WhatsApp atiende consultas y toma pedidos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Aviso automático al dueño por cada pedido nuevo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Panel en el celular para confirmar, cobrar y entregar</li>
+        </ul>
+      </article>
+      <article class="card case reveal">
+        <div class="case-chat" aria-label="Ejemplo de flujo de reserva por WhatsApp">
+          <p class="msg in">Hola, quiero reservar una mesa</p>
+          <p class="msg out">¡Claro! ¿Para qué día y hora, y cuántas personas?</p>
+          <p class="msg in">Sábado a las 8, somos 4</p>
+          <p class="msg out">Listo ✅ Mesa reservada para 4 el sábado a las 20:00. Te recordaré 2 horas antes.</p>
+          <span class="demo-tag case-tag">Flujo real, texto de ejemplo</span>
+        </div>
+        <h3>La Mesa · reservas y pedidos por WhatsApp para un restaurante</h3>
+        <ul class="case-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>El bot toma la reserva: día, hora y número de personas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Asigna una mesa libre del tamaño justo, sin cruces de horario</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Recordatorio automático al cliente antes de su reserva</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Los pedidos por WhatsApp llegan directo a la cocina</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section class="problem alt" id="problema">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">El problema</p>
+      <h2>Te ocupas de las mismas tareas una y otra vez</h2>
+      <p class="sub">No es falta de esfuerzo: es tiempo que no llega a tus clientes ni a hacer crecer tu negocio.</p>
+    </div>
+    <div class="grid cols-3">
+      <article class="card reveal"><h3>Copias datos a mano</h3><p>Pasas información de un Excel a otro, de WhatsApp a un cuaderno. Cada copia puede traer un error.</p></article>
+      <article class="card reveal"><h3>Cobras y recuerdas tarde</h3><p>Los pagos pendientes se pierden entre mensajes y se cobran cuando ya cuesta más.</p></article>
+      <article class="card reveal"><h3>No sabes qué mejorar</h3><p>Sin medir cuánto tiempo toma cada tarea, no hay forma de saber dónde estás perdiendo horas.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section id="como">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">Cómo funciona</p>
+      <h2>Mejora continua, en tres pasos simples</h2>
+      <p class="sub">Kaizen significa mejorar un poco cada vez. Así lo aplico a tu negocio.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h3>1. Me cuentas tu tarea</h3><p>Me escribes por WhatsApp cuál es la tarea que más tiempo te quita y cuánto tarda hoy.</p></div>
+      <div class="step reveal"><h3>2. La automatizo en 7 días</h3><p>Construyo una solución sencilla, la pruebo contigo y mido cuánto tiempo ahorras.</p></div>
+      <div class="step reveal"><h3>3. La mejoramos cada mes</h3><p>Revisamos los números, ajustamos y atacamos la siguiente tarea. Poco a poco, todo fluye mejor.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ AUTOMATIZO -->
+<section class="alt" id="beneficios">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">Qué puedo automatizar</p>
+      <h2>Tareas típicas que se resuelven rápido</h2>
+    </div>
+    <div class="grid cols-3">
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h3"/></svg></div>
+        <h3>Cierres de caja y reportes</h3><p>Resúmenes de ventas y gastos listos sin que tengas que sumar ni copiar nada.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Recordatorios por WhatsApp</h3><p>Avisos de pago, citas o entregas que salen solos en el momento correcto.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Control de pendientes</h3><p>Quién debe qué y qué falta por hacer, siempre a la vista y actualizado.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></div>
+        <h3>Recibos y documentos</h3><p>Generación de recibos, cotizaciones y estados de cuenta con tus datos.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+        <h3>Números que se entienden</h3><p>Paneles simples para ver cuánto ganas, cuánto debes cobrar y dónde se va el tiempo.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>Lo que tú necesites</h3><p>Si es una tarea repetitiva y tiene reglas claras, casi siempre se puede automatizar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section id="precios">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">Precios</p>
+      <h2>Empieza pequeño, sin arriesgar</h2>
+      <p class="sub">Precios de lanzamiento, pensados para que puedas probar sin compromiso.</p>
+    </div>
+    <div class="grid cols-3 prices">
+      <article class="card price reveal">
+        <h3>Piloto</h3>
+        <p class="amount">S/ 49<small> pago único</small></p>
+        <p>Resolvemos una tarea concreta y medimos el resultado.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>1 tarea automatizada</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Entrega en 7 días</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Medimos el tiempo que ahorras</li>
+        </ul>
+        <a class="btn btn-ghost" data-wa="Hola, quiero el plan Piloto de S/ 49." href="#">Quiero el piloto</a>
+      </article>
+      <article class="card price featured reveal">
+        <span class="badge">Recomendado</span>
+        <h3>Mejora continua</h3>
+        <p class="amount">S/ 79<small> al mes</small></p>
+        <p>Cada mes mejoramos y sumamos una tarea más.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Revisión mensual con números</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Ajustes y soporte por WhatsApp</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Una mejora nueva cada mes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Cancelas cuando quieras</li>
+        </ul>
+        <a class="btn btn-primary" data-wa="Hola, quiero el plan Mejora continua de S/ 79 al mes." href="#">Quiero mejora continua</a>
+      </article>
+      <article class="card price reveal">
+        <h3>A medida</h3>
+        <p class="amount">Cotiza<small> según el caso</small></p>
+        <p>Para procesos más grandes o varios negocios.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Varias tareas o sedes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Sistema propio para tu negocio</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Propuesta clara antes de empezar</li>
+        </ul>
+        <a class="btn btn-ghost" data-wa="Hola, quiero una cotización a medida para mi negocio." href="#">Pedir cotización</a>
+      </article>
+    </div>
+    <p class="note">Precios en soles peruanos. Confirmamos el alcance por WhatsApp antes de empezar, para que no haya sorpresas.</p>
+  </div>
+</section>
+
+<!-- PREGUNTAS -->
+<section class="alt" id="preguntas">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">Preguntas frecuentes</p>
+      <h2>Lo que suelen preguntar antes de empezar</h2>
+    </div>
+    <div class="faq">
+      <details class="reveal"><summary>¿Necesito saber de tecnología?</summary><p>No. Me cuentas la tarea con tus palabras y yo me encargo del resto. Te explico todo de forma simple, por WhatsApp.</p></details>
+      <details class="reveal"><summary>¿Por qué es tan barato?</summary><p>Estoy empezando y quiero construir casos reales con negocios como el tuyo. Por eso los precios de lanzamiento son bajos; pueden subir más adelante.</p></details>
+      <details class="reveal"><summary>¿Qué pasa con mis datos?</summary><p>Solo uso la información que necesito para automatizar tu tarea, y no la comparto con terceros. Antes de empezar te explico qué datos se usan y dónde se guardan.</p></details>
+      <details class="reveal"><summary>¿Y si mi tarea no se puede automatizar?</summary><p>Te lo digo antes de cobrarte nada. Primero conversamos por WhatsApp y confirmamos que sí es posible y qué resultado podemos esperar.</p></details>
+      <details class="reveal"><summary>¿Hay contrato o permanencia?</summary><p>No. El piloto es un pago único y el plan mensual lo puedes cancelar cuando quieras.</p></details>
+      <details class="reveal"><summary>¿Atiendes fuera de Lima?</summary><p>Sí. Todo se coordina a distancia, por WhatsApp y videollamada si hace falta.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section>
+  <div class="wrap">
+    <div class="final reveal">
+      <h2>Cuéntame cuál es tu tarea más pesada</h2>
+      <p>Escríbeme por WhatsApp, te respondo hoy y vemos si podemos resolverla en una semana.</p>
+      <a class="btn btn-primary" data-wa="Hola, quiero contarte mi tarea más repetitiva para ver si se puede automatizar." href="#">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.5.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>
+        Escribir por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="foot-col">
+      <span>© <span id="anio">2026</span> Kaizen Studio · Perú</span>
+      <span id="pieTitular" hidden></span>
+    </div>
+    <ul class="foot-links">
+      <li><a data-wa="Hola, quiero más información sobre Kaizen Studio." href="#">WhatsApp: +51 981 009 568</a></li>
+      <li hidden><a id="pieEmail" href="#"></a></li>
+      <li><a href="privacidad.html">Política de privacidad</a></li>
+      <li hidden><a id="pieLibro" href="#" target="_blank" rel="noopener">📕 Libro de Reclamaciones</a></li>
+    </ul>
+  </div>
+</footer>
+
+<a class="wa-float" data-wa="Hola, quiero más información sobre Kaizen Studio." href="#" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.5.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>
+</a>
+
+<script>
+(function(){
+  var NUMERO = "51981009568";
+  // Convierte cada enlace con data-wa en un enlace a WhatsApp con el mensaje ya escrito.
+  document.querySelectorAll("[data-wa]").forEach(function(a){
+    a.href = "https://wa.me/" + NUMERO + "?text=" + encodeURIComponent(a.getAttribute("data-wa"));
+    a.target = "_blank"; a.rel = "noopener noreferrer";
+  });
+  document.getElementById("anio").textContent = new Date().getFullYear();
+
+  // El ejemplo del héroe está a la vista desde el inicio: sus barras se
+  // animan al cargar, sin esperar al scroll.
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){
+    document.getElementById("demo").classList.add("in");
+  }); });
+
+  // Datos legales del pie: completa y se muestran solos (vacío = oculto).
+  var DATOS = {
+    titular: "",           // nombre completo o razón social
+    ruc: "",               // RUC (o DNI si aún no tienes RUC)
+    email: "",             // correo de contacto
+    libro: ""              // URL de tu Libro de Reclamaciones virtual
+  };
+  var legal = [];
+  if (DATOS.titular) legal.push(DATOS.titular);
+  if (DATOS.ruc) legal.push("RUC " + DATOS.ruc);
+  if (legal.length) { var t = document.getElementById("pieTitular"); t.textContent = legal.join(" · "); t.hidden = false; }
+  if (DATOS.email) { var e = document.getElementById("pieEmail"); e.href = "mailto:" + DATOS.email; e.textContent = DATOS.email; e.parentNode.hidden = false; }
+  if (DATOS.libro) { var l = document.getElementById("pieLibro"); l.href = DATOS.libro; l.parentNode.hidden = false; }
+
+  // Aparecer al hacer scroll (se omite si el usuario prefiere menos movimiento).
+  var els = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    els.forEach(function(e){ e.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, { threshold: 0.15 });
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
+</body>
+</html>
