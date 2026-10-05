@@ -175,6 +175,27 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
 .msg.out{align-self:flex-end;background:var(--accent-soft);color:var(--text);border-bottom-right-radius:4px}
 .case-tag{position:absolute;left:1rem;bottom:.8rem;font-size:.75rem;color:var(--muted)}
 
+/* Demos de productos */
+.dm-grid{align-items:stretch}
+.dm-card{display:flex;flex-direction:column;min-width:0}
+.dm-card .dm-estado{align-self:flex-start;display:inline-flex;align-items:center;gap:.45rem;padding:.25rem .7rem;border-radius:999px;background:var(--surface-2);color:var(--muted);font-size:.8rem;font-weight:700;margin-bottom:.8rem}
+.dm-estado.vivo{background:var(--accent-soft);color:var(--accent-strong)}
+.dm-estado.vivo::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--accent);flex:none}
+.dm-card .dm-para{font-weight:700;color:var(--text);margin-bottom:.25rem}
+.dm-card h3{overflow-wrap:anywhere}
+.dm-card .case-list{margin-bottom:1.25rem}
+.dm-cred{display:grid;gap:.55rem;margin:0 0 1.25rem;padding:.9rem;background:var(--surface-2);border-radius:var(--radius-sm)}
+.dm-cred div{display:grid;grid-template-columns:minmax(0,1fr);gap:.25rem}
+.dm-cred dt{font-size:.85rem;color:var(--muted)}
+.dm-cred dd{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;min-width:0}
+.dm-cred code{white-space:nowrap;min-width:0;font-size:.8rem}
+.dm-card .dm-aviso{margin:-.75rem 0 .9rem;color:var(--muted);font-size:.85rem}
+.dm-copy{margin-left:auto;padding:.35rem .55rem;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--text);font:inherit;font-size:.8rem;cursor:pointer;flex:none}
+.dm-card .dm-btn{width:100%;margin-top:auto;padding-inline:.8rem}
+.dm-medida{border:1px dashed var(--accent);background:color-mix(in srgb,var(--accent-soft) 45%,var(--surface))}
+.dm-nota{max-width:48rem;margin:1.75rem auto 0;text-align:center;color:var(--muted);font-size:.95rem;overflow-wrap:anywhere}
+.dm-nota a{color:var(--accent-strong);font-weight:700}
+
 /* WhatsApp flotante */
 .wa-float{position:fixed;right:16px;bottom:16px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform .18s}
 .wa-float:hover{transform:scale(1.07)}
@@ -186,8 +207,15 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
 
 @media (min-width:720px){
   .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  .dm-medida{grid-column:1 / -1;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:.25rem 1rem}
+  .dm-medida .icon{grid-column:1;grid-row:1 / span 4}
+  .dm-medida-copy{grid-column:2;grid-row:1 / span 4}
+  .dm-medida .dm-btn{grid-column:3;grid-row:1 / span 4;width:auto;margin-top:0}
   .grid.cols-2{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:719px){
+  .dm-medida .dm-btn{margin-top:1.25rem}
 }
 @media (min-width:920px){
   .nav-links{display:flex}
@@ -212,6 +240,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
     </a>
     <ul class="nav-links">
       <li><a href="#casos">Casos</a></li>
+      <li><a href="#demos">Demos</a></li>
       <li><a href="#problema">El problema</a></li>
       <li><a href="#como">Cómo funciona</a></li>
       <li><a href="#precios">Precios</a></li>
@@ -303,6 +332,126 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
         </ul>
       </article>
     </div>
+  </div>
+</section>
+
+<section class="alt" id="demos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">Pruébalo tú mismo</p>
+      <h2>Demos de mis sistemas</h2>
+      <p class="sub">Entra y úsalos como si fueran tuyos. Son los mismos sistemas que uso en negocios reales, con datos de prueba.</p>
+    </div>
+    <div class="grid cols-3 dm-grid">
+      <article class="card dm-card reveal" data-demo="inv">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7M12 11v10M7.5 5l9 4"/></svg></div>
+        <span class="dm-estado">Demo guiada</span>
+        <p class="dm-para">Bodegas y tiendas</p>
+        <h3>Inventario y caja</h3>
+        <ul class="case-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Stock al día con cada venta y compra</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Caja rápida con lector de códigos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Alertas cuando un producto se acaba</li>
+        </ul>
+        <dl class="dm-cred" hidden>
+          <div><dt>Usuario</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
+          <div><dt>Clave</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
+        </dl>
+        <a class="btn btn-ghost dm-btn" data-wa="Hola, quiero ver la demo de Inventario y caja." href="#">Pedir demo en vivo</a>
+      </article>
+      <article class="card dm-card reveal" data-demo="tienda">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.9-1.4L22 9H6"/><circle cx="10" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg></div>
+        <span class="dm-estado">Demo guiada</span>
+        <p class="dm-para">Venta online</p>
+        <h3>Tienda online con pedidos</h3>
+        <ul class="case-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Catálogo y carrito desde el celular</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Delivery calculado por distancia</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Panel para confirmar, cobrar y entregar</li>
+        </ul>
+        <dl class="dm-cred" hidden>
+          <div><dt>Usuario</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
+          <div><dt>Clave</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
+        </dl>
+        <a class="btn btn-ghost dm-btn" data-wa="Hola, quiero ver la demo de Tienda online con pedidos." href="#">Pedir demo en vivo</a>
+      </article>
+      <article class="card dm-card reveal" data-demo="restaurante">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v7a3 3 0 0 0 6 0V3M6 3v18M15 3v18M15 3c4 2 6 5 6 9h-6"/></svg></div>
+        <span class="dm-estado">Demo guiada</span>
+        <p class="dm-para">Restaurantes</p>
+        <h3>Mesas, cocina y cobro</h3>
+        <ul class="case-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Pedidos por mesa desde una tablet</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>La cocina ve cada pedido al instante</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Cobro y cierre de caja del día</li>
+        </ul>
+        <dl class="dm-cred" hidden>
+          <div><dt>Usuario</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
+          <div><dt>Clave</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
+        </dl>
+        <a class="btn btn-ghost dm-btn" data-wa="Hola, quiero ver la demo de Mesas, cocina y cobro." href="#">Pedir demo en vivo</a>
+      </article>
+      <article class="card dm-card reveal" data-demo="citas">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h3M8 17h6"/></svg></div>
+        <span class="dm-estado">Demo guiada</span>
+        <p class="dm-para">Consultorios y clínicas</p>
+        <h3>Agenda de citas</h3>
+        <ul class="case-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Calendario por área y profesional</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Reserva web sin choques de horario</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Pacientes y estados de cada cita</li>
+        </ul>
+        <dl class="dm-cred" hidden>
+          <div><dt>Usuario</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
+          <div><dt>Clave</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
+        </dl>
+        <a class="btn btn-ghost dm-btn" data-wa="Hola, quiero ver la demo de Agenda de citas." href="#">Pedir demo en vivo</a>
+      </article>
+      <article class="card dm-card reveal" data-demo="edificios">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V5l7-3v19M19 21V9l-7-4M8 7h1M8 11h1M8 15h1M15 11h1M15 15h1"/></svg></div>
+        <span class="dm-estado">Demo guiada</span>
+        <p class="dm-para">Administradoras de edificios</p>
+        <h3>Administración de edificios</h3>
+        <ul class="case-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Edificios, propietarios y cuotas en un solo lugar</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Morosidad y pagos de cada departamento al día</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Mantenimientos con alertas de vencimiento</li>
+        </ul>
+        <p class="dm-aviso" hidden>Demo de solo lectura: los cambios no se guardan.</p>
+        <dl class="dm-cred" hidden>
+          <div><dt>Usuario</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
+          <div><dt>Clave</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
+        </dl>
+        <a class="btn btn-ghost dm-btn" data-wa="Hola, quiero ver la demo de Administración de edificios." href="#">Pedir demo en vivo</a>
+      </article>
+      <article class="card dm-card reveal" data-demo="agente">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg></div>
+        <span class="dm-estado">Demo guiada</span>
+        <p class="dm-para">Cualquier negocio</p>
+        <h3>Asistente de WhatsApp</h3>
+        <ul class="case-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Responde consultas a cualquier hora</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Toma pedidos y reservas solo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Panel con chats, pedidos y reportes</li>
+        </ul>
+        <dl class="dm-cred" hidden>
+          <div><dt>Usuario</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
+          <div><dt>Clave</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
+        </dl>
+        <a class="btn btn-ghost dm-btn" data-wa="Hola, quiero ver la demo de Asistente de WhatsApp." href="#">Pedir demo en vivo</a>
+      </article>
+      <article class="card dm-card dm-medida reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div>
+        <div class="dm-medida-copy">
+        <span class="dm-estado">A medida</span>
+        <p class="dm-para">¿Tu negocio no está aquí?</p>
+        <h3>Sistema a tu medida</h3>
+        <p>Si tu tarea es repetitiva y tiene reglas claras, la convierto en un sistema como estos.</p>
+        </div>
+        <a class="btn btn-primary dm-btn" data-wa="Hola, mi negocio no está en las demos y quiero un sistema a medida." href="#">Cuéntame tu caso</a>
+      </article>
+    </div>
+    <p class="dm-nota reveal">Los datos de las demos son de prueba y se reinician a diario. ¿No carga o quieres verla con tu caso? <a data-wa="Hola, quiero que me muestres una demo en vivo." href="#">Te la muestro en vivo por WhatsApp</a>.</p>
   </div>
 </section>
 
@@ -479,6 +628,48 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
 <script>
 (function(){
   var NUMERO = "51981009568";
+  // Configura aquí las URL HTTPS y credenciales de cada demo cuando estén listas.
+  var DEMOS = {
+    inv:{url:"",usuario:"",clave:""},
+    tienda:{url:"",usuario:"",clave:""},
+    restaurante:{url:"",usuario:"",clave:""},
+    citas:{url:"",usuario:"",clave:""},
+    edificios:{url:"https://h981x3z1hr.hdx0wdwe3.workers.dev/clientes/edificios_demo/edificioscondominios/",usuario:"demo@ejemplo.com",clave:"DemoEdificios2026"},
+    agente:{url:"",usuario:"",clave:""}
+  };
+  document.querySelectorAll("[data-demo]").forEach(function(card){
+    var demo = DEMOS[card.getAttribute("data-demo")];
+    if (!demo || !demo.url || demo.url.indexOf("https://") !== 0) return;
+    var boton = card.querySelector(".dm-btn");
+    var estado = card.querySelector(".dm-estado");
+    boton.removeAttribute("data-wa");
+    boton.href = demo.url; boton.target = "_blank"; boton.rel = "noopener noreferrer";
+    boton.textContent = "Abrir demo";
+    boton.classList.remove("btn-ghost"); boton.classList.add("btn-primary");
+    estado.textContent = "Demo en vivo"; estado.classList.add("vivo");
+    if (demo.usuario || demo.clave) {
+      var cred = card.querySelector(".dm-cred");
+      cred.querySelectorAll("code")[0].textContent = demo.usuario;
+      cred.querySelectorAll("code")[1].textContent = demo.clave;
+      cred.hidden = false;
+      var aviso = card.querySelector(".dm-aviso");
+      if (aviso) aviso.hidden = false;
+    }
+  });
+  document.querySelectorAll(".dm-copy").forEach(function(boton){
+    boton.addEventListener("click", function(){
+      var codigo = boton.parentNode.querySelector("code").textContent;
+      var anterior = boton.textContent;
+      function listo(){ boton.textContent = "Copiado"; setTimeout(function(){ boton.textContent = anterior; }, 1500); }
+      function respaldo(){
+        var area = document.createElement("textarea"); area.value = codigo;
+        area.style.position = "fixed"; area.style.opacity = "0"; document.body.appendChild(area);
+        area.select(); document.execCommand("copy"); area.remove(); listo();
+      }
+      if (window.isSecureContext && navigator.clipboard) navigator.clipboard.writeText(codigo).then(listo, respaldo);
+      else respaldo();
+    });
+  });
   // Convierte cada enlace con data-wa en un enlace a WhatsApp con el mensaje ya escrito.
   document.querySelectorAll("[data-wa]").forEach(function(a){
     a.href = "https://wa.me/" + NUMERO + "?text=" + encodeURIComponent(a.getAttribute("data-wa"));
