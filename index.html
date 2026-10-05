@@ -350,9 +350,11 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
         <h3>Inventario y caja</h3>
         <ul class="case-list">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Stock al día con cada venta y compra</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Caja rápida con lector de códigos</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Alertas cuando un producto se acaba</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Punto de venta con lector de códigos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Alertas de reposición y productos agotados</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Reporte de ganancias y margen por producto</li>
         </ul>
+        <p class="dm-aviso" hidden>Demo de solo lectura: los cambios no se guardan.</p>
         <dl class="dm-cred" hidden>
           <div><dt>Usuario</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
           <div><dt>Clave</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
@@ -632,7 +634,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
   var NUMERO = "51981009568";
   // Configura aquí las URL HTTPS y credenciales de cada demo cuando estén listas.
   var DEMOS = {
-    inv:{url:"",usuario:"",clave:""},
+    inv:{url:"https://h981x3z1hr.hdx0wdwe3.workers.dev/clientes/inv_demo/inv/login.php",usuario:"demo",clave:"DemoInventario2026"},
     tienda:{url:"",usuario:"",clave:""},
     restaurante:{url:"",usuario:"",clave:""},
     citas:{url:"",usuario:"",clave:""},
