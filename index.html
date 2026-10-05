@@ -192,8 +192,10 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
 .dm-card .dm-aviso{margin:-.75rem 0 .9rem;color:var(--muted);font-size:.85rem}
 .dm-copy{margin-left:auto;padding:.35rem .55rem;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--text);font:inherit;font-size:.8rem;cursor:pointer;flex:none}
 .dm-card .dm-btn{width:100%;margin-top:auto;padding-inline:.8rem}
-.dm-card .dm-cred-titulo{margin:0 0 .45rem;font-size:.85rem;font-weight:700;color:var(--muted)}
-.dm-card .dm-panel{width:100%;margin-top:.6rem;padding-inline:.8rem}
+.dm-card .dm-extras{display:grid;gap:.6rem;margin-top:.6rem}
+.dm-card .dm-extras .btn{width:100%;padding-inline:.8rem}
+.dm-card .dm-extra-nota{margin:-.2rem 0 0;font-size:.8rem;color:var(--muted);text-align:center;overflow-wrap:anywhere}
+.dm-card .dm-extra-nota code{font-size:.78rem}
 .dm-medida{border:1px dashed var(--accent);background:color-mix(in srgb,var(--accent-soft) 45%,var(--surface))}
 .dm-nota{max-width:48rem;margin:1.75rem auto 0;text-align:center;color:var(--muted);font-size:.95rem;overflow-wrap:anywhere}
 .dm-nota a{color:var(--accent-strong);font-weight:700}
@@ -373,13 +375,11 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Delivery calculado por distancia</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Panel para confirmar, cobrar y entregar</li>
         </ul>
-        <p class="dm-cred-titulo" hidden>Panel del vendedor</p>
         <dl class="dm-cred" hidden>
           <div><dt>Usuario</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
           <div><dt>Clave</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
         </dl>
         <a class="btn btn-ghost dm-btn" data-wa="Hola, quiero ver la demo de Tienda online con pedidos." href="#">Pedir demo en vivo</a>
-        <a class="btn btn-ghost dm-panel" href="#" hidden>Abrir panel del vendedor</a>
       </article>
       <article class="card dm-card reveal" data-demo="restaurante">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v7a3 3 0 0 0 6 0V3M6 3v18M15 3v18M15 3c4 2 6 5 6 9h-6"/></svg></div>
@@ -638,10 +638,15 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
   var NUMERO = "51981009568";
   // Configura aquí las URL HTTPS y credenciales de cada demo cuando estén listas.
   var DEMOS = {
-    inv:{url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/z2hiEs2q6knJnHLxHk8a/",usuario:"demo",clave:"DemoInventario2026"},
-    tienda:{url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/tD7mQ2vN9aK4xR6pL8cB/",usuario:"demo",clave:"DemoTienda2026",panel:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/tD7mQ2vN9aK4xR6pL8cB/J93zqVPK75h8"},
-    restaurante:{url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/rM5wY8hC3nF2qJ7zA9eP/",usuario:"demo",clave:"DemoMesa2026"},
-    citas:{url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/cV4bK7sX2dG9mT6qH3nL/xQ6TeBi0t3hi",usuario:"demo",clave:"DemoCitas2026"},
+    inv:{url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/z2hiEs2q6knJnHLxHk8a/",usuario:"demo",clave:"DemoInventario2026",
+      extras:[{texto:"Entrar como empleado",url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/z2hiEs2q6knJnHLxHk8a/",usuario:"cajero",clave:"DemoInventario2026"}]},
+    tienda:{url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/tD7mQ2vN9aK4xR6pL8cB/",
+      extras:[{texto:"Entrar al panel admin",url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/tD7mQ2vN9aK4xR6pL8cB/J93zqVPK75h8",usuario:"demo",clave:"DemoTienda2026"}]},
+    restaurante:{url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/rM5wY8hC3nF2qJ7zA9eP/",usuario:"demo",clave:"DemoMesa2026",
+      extras:[{texto:"Entrar a cocina",url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/rM5wY8hC3nF2qJ7zA9eP/sxBnOJk4EKq8",nota:"Primero inicia sesión con «Abrir demo»."},
+              {texto:"Entrar a cobro",url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/rM5wY8hC3nF2qJ7zA9eP/xoPzPmkUfMX6"}]},
+    citas:{url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/cV4bK7sX2dG9mT6qH3nL/xQ6TeBi0t3hi",usuario:"demo",clave:"DemoCitas2026",
+      extras:[{texto:"Entrar a reserva",url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/cV4bK7sX2dG9mT6qH3nL/FwCR3tEVvrHM",nota:"Sin login: así reserva el paciente."}]},
     edificios:{url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/Lcjmdbm7Szmy292DXTk3/",usuario:"demo@ejemplo.com",clave:"DemoEdificios2026"},
     agente:{url:"",usuario:"",clave:""}
   };
@@ -663,12 +668,26 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
       var aviso = card.querySelector(".dm-aviso");
       if (aviso) aviso.hidden = false;
     }
-    // Segundo acceso (p. ej. panel del vendedor de la tienda): las credenciales son de ese panel.
-    var panel = card.querySelector(".dm-panel");
-    if (panel && demo.panel && demo.panel.indexOf("https://") === 0) {
-      panel.href = demo.panel; panel.target = "_blank"; panel.rel = "noopener noreferrer"; panel.hidden = false;
-      var titulo = card.querySelector(".dm-cred-titulo");
-      if (titulo) titulo.hidden = false;
+    // Accesos adicionales (cocina, cobro, panel admin, empleado), debajo de "Abrir demo".
+    if (demo.extras && demo.extras.length) {
+      var caja = document.createElement("div"); caja.className = "dm-extras";
+      demo.extras.forEach(function(x){
+        if (!x.url || x.url.indexOf("https://") !== 0) return;
+        var a = document.createElement("a");
+        a.className = "btn btn-ghost"; a.href = x.url; a.target = "_blank"; a.rel = "noopener noreferrer"; a.textContent = x.texto;
+        caja.appendChild(a);
+        if (x.usuario || x.nota) {
+          var n = document.createElement("p"); n.className = "dm-extra-nota";
+          if (x.usuario) {
+            n.appendChild(document.createTextNode("Usuario "));
+            var cu = document.createElement("code"); cu.textContent = x.usuario; n.appendChild(cu);
+            n.appendChild(document.createTextNode(" · Clave "));
+            var cc = document.createElement("code"); cc.textContent = x.clave; n.appendChild(cc);
+          } else n.textContent = x.nota;
+          caja.appendChild(n);
+        }
+      });
+      boton.insertAdjacentElement("afterend", caja);
     }
   });
   document.querySelectorAll(".dm-copy").forEach(function(boton){
