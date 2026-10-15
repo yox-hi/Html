@@ -178,6 +178,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
 /* Demos de productos */
 .dm-grid{align-items:stretch}
 .dm-card{display:flex;flex-direction:column;min-width:0}
+.dm-video{display:block;width:100%;aspect-ratio:1280/800;object-fit:cover;border-radius:var(--radius);background:var(--surface-2);margin-bottom:1rem}
 .dm-card .dm-estado{align-self:flex-start;display:inline-flex;align-items:center;gap:.45rem;padding:.25rem .7rem;border-radius:999px;background:var(--surface-2);color:var(--muted);font-size:.8rem;font-weight:700;margin-bottom:.8rem}
 .dm-estado.vivo{background:var(--accent-soft);color:var(--accent-strong)}
 .dm-estado.vivo::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--accent);flex:none}
@@ -197,6 +198,27 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
 .dm-medida{border:1px dashed var(--accent);background:color-mix(in srgb,var(--accent-soft) 45%,var(--surface))}
 .dm-nota{max-width:48rem;margin:1.75rem auto 0;text-align:center;color:var(--muted);font-size:.95rem;overflow-wrap:anywhere}
 .dm-nota a{color:var(--accent-strong);font-weight:700}
+
+/* Demos compactas y modal — 2026-10-15 */
+.dm-grid,.grid.cols-3.dm-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:1rem}
+.dm-grid > .dm-card:not(.dm-medida):not(.is-open){cursor:pointer;padding:1.1rem;gap:.25rem;transition:transform .2s cubic-bezier(.23,1,.32,1),border-color .2s cubic-bezier(.23,1,.32,1)}
+.dm-grid > .dm-card:not(.dm-medida):not(.is-open):hover{transform:translateY(-2px);border-color:var(--accent)}
+.dm-grid > .dm-card:not(.dm-medida):not(.is-open):active{transform:scale(.98)}
+.dm-grid > .dm-card:not(.dm-medida):not(.is-open):focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.dm-grid > .dm-card:not(.dm-medida):not(.is-open) > :is(.case-list,.dm-aviso,.dm-cred,.dm-btn,.dm-extras,.dm-video,.dm-nota,.dm-medida-copy){display:none}
+.dm-grid > .dm-card:not(.dm-medida):not(.is-open) .dm-estado{margin:0;font-size:.72rem;padding:.2rem .55rem}
+.dm-grid > .dm-card:not(.dm-medida):not(.is-open) .dm-para{font-size:.88rem;margin:0}
+.dm-grid > .dm-card:not(.dm-medida):not(.is-open) h3{font-size:1.08rem;margin:0}
+.dm-thumb{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius-sm);background:var(--surface-2)}
+.dm-ver{margin-top:auto;padding-top:.6rem;color:var(--accent-strong);font-size:.85rem;font-weight:750}
+.dm-modal{margin:auto;width:min(560px,calc(100% - 1.5rem));max-width:none;max-height:90dvh;overflow:auto;padding:1rem;background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:var(--radius)}
+.dm-modal::backdrop{background:rgba(10,20,22,.68);backdrop-filter:blur(3px)}
+.dm-modal-close{position:sticky;top:0;z-index:1;display:grid;place-items:center;margin:0 0 .5rem auto;width:2.5rem;height:2.5rem;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--text);font:inherit;font-size:1.5rem;cursor:pointer}
+.dm-modal .dm-card.is-open{box-shadow:none;padding:0;border:0;background:transparent} /* sin tarjeta dentro de tarjeta */
+.dm-modal .dm-card.is-open{opacity:1;transform:none}
+.dm-modal .dm-thumb,.dm-modal .dm-ver{display:none}
+.dm-placeholder{visibility:hidden;min-width:0}
+@media (prefers-reduced-motion:reduce){.dm-grid > .dm-card:not(.dm-medida):not(.is-open){transition:none}}
 
 /* WhatsApp flotante */
 .wa-float{position:fixed;right:16px;bottom:16px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform .18s}
@@ -381,6 +403,10 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
       </article>
       <article class="card dm-card reveal" data-demo="restaurante">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v7a3 3 0 0 0 6 0V3M6 3v18M15 3v18M15 3c4 2 6 5 6 9h-6"/></svg></div>
+        <video class="dm-video" muted loop playsinline preload="none" poster="demo-vid/restaurante.jpg" aria-label="Video: cómo funciona la demo de restaurante">
+          <source src="demo-vid/restaurante.webm" type="video/webm">
+          <source src="demo-vid/restaurante.mp4" type="video/mp4">
+        </video>
         <span class="dm-estado">Demo guiada</span>
         <p class="dm-para">Restaurantes</p>
         <h3>Mesas, cocina y cobro</h3>
@@ -474,6 +500,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
         <a class="btn btn-primary dm-btn" data-wa="Hola, mi negocio no está en las demos y quiero un sistema a medida." href="#">Cuéntame tu caso</a>
       </article>
     </div>
+    <dialog class="dm-modal" aria-label="Detalle de demo"><button class="dm-modal-close" type="button" aria-label="Cerrar">×</button></dialog>
     <p class="dm-nota reveal">Los datos de las demos son de prueba y se reinician a diario. ¿No carga o quieres verla con tu caso? <a data-wa="Hola, quiero que me muestres una demo en vivo." href="#">Te la muestro en vivo por WhatsApp</a>.</p>
   </div>
 </section>
@@ -751,6 +778,21 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
   if (DATOS.email) { var e = document.getElementById("pieEmail"); e.href = "mailto:" + DATOS.email; e.textContent = DATOS.email; e.parentNode.hidden = false; }
   if (DATOS.libro) { var l = document.getElementById("pieLibro"); l.href = DATOS.libro; l.parentNode.hidden = false; }
 
+  // Reproducir las demos de video solo mientras están visibles.
+  var videos = document.querySelectorAll(".dm-video");
+  var menosMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (menosMovimiento) {
+    videos.forEach(function(video){ video.setAttribute("controls", ""); });
+  } else if ("IntersectionObserver" in window) {
+    var videoObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) entry.target.play().catch(function(){});
+        else entry.target.pause();
+      });
+    }, { threshold: 0.5 });
+    videos.forEach(function(video){ videoObserver.observe(video); });
+  }
+
   // Aparecer al hacer scroll (se omite si el usuario prefiere menos movimiento).
   var els = document.querySelectorAll(".reveal");
   if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -761,6 +803,76 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
     entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
   }, { threshold: 0.15 });
   els.forEach(function(e){ io.observe(e); });
+
+})();
+
+// Modal de demos compactas — 2026-10-15. Se mueve el article real para conservar datos y listeners.
+(function(){
+  var dmDialog = document.querySelector(".dm-modal");
+  var dmClose = dmDialog.querySelector(".dm-modal-close");
+  var dmActive = null;
+  var dmPlaceholder = null;
+  var dmReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var dmBodyOverflow = "";
+  function openDemo(card){
+    if (dmActive || !card || card.classList.contains("dm-medida")) return;
+    dmActive = card;
+    dmPlaceholder = document.createElement("div");
+    dmPlaceholder.className = "dm-placeholder";
+    dmPlaceholder.setAttribute("aria-hidden", "true");
+    card.parentNode.insertBefore(dmPlaceholder, card);
+    card.classList.add("is-open");
+    card.removeAttribute("role"); card.removeAttribute("tabindex"); // dentro del modal no es botón: tiene botones propios
+    dmDialog.appendChild(card);
+    dmBodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    dmDialog.showModal();
+    var video = card.querySelector(".dm-video");
+    if (video && !dmReduced) video.play().catch(function(){});
+    dmClose.focus();
+  }
+  document.querySelectorAll(".dm-grid > .dm-card:not(.dm-medida)").forEach(function(card){
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("aria-haspopup", "dialog");
+    var posterVideo = card.querySelector(".dm-video[poster]");
+    if (posterVideo) {
+      var thumb = document.createElement("img");
+      thumb.className = "dm-thumb";
+      thumb.src = posterVideo.getAttribute("poster");
+      thumb.alt = "";
+      thumb.setAttribute("aria-hidden", "true");
+      card.insertBefore(thumb, card.querySelector(".dm-estado"));
+    }
+    var indicator = document.createElement("span");
+    indicator.className = "dm-ver";
+    indicator.textContent = "Ver demo";
+    card.appendChild(indicator);
+    card.addEventListener("click", function(event){
+      if (event.target.closest("a,button")) return;
+      openDemo(card);
+    });
+    card.addEventListener("keydown", function(event){
+      if (event.target !== card || (event.key !== "Enter" && event.key !== " ")) return;
+      event.preventDefault();
+      openDemo(card);
+    });
+  });
+  dmClose.addEventListener("click", function(){ dmDialog.close(); });
+  dmDialog.addEventListener("click", function(event){ if (event.target === dmDialog) dmDialog.close(); });
+  dmDialog.addEventListener("close", function(){
+    if (!dmActive) return;
+    var card = dmActive;
+    var video = card.querySelector(".dm-video");
+    if (video) video.pause();
+    card.classList.remove("is-open");
+    card.setAttribute("role", "button"); card.setAttribute("tabindex", "0");
+    dmPlaceholder.parentNode.replaceChild(card, dmPlaceholder);
+    document.body.style.overflow = dmBodyOverflow;
+    card.focus();
+    dmActive = null;
+    dmPlaceholder = null;
+  });
 })();
 </script>
 </body>
