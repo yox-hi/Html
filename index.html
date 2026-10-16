@@ -229,7 +229,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
 .dm-grid > .dm-card:not(.dm-medida):not(.is-open){position:relative;display:flex;height:100%;min-width:0;overflow:hidden;padding:0;gap:0;cursor:pointer;transition:transform .2s cubic-bezier(.23,1,.32,1)}
 .dm-grid > .dm-card:not(.dm-medida):not(.is-open):hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
 .dm-grid > .dm-card:not(.dm-medida):not(.is-open):focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-.dm-grid > .dm-card:not(.dm-medida):not(.is-open) > :is(.icon,.case-list,.dm-aviso,.dm-cred,.dm-btn,.dm-extras,.dm-video,.dm-nota,.dm-medida-copy){display:none}
+.dm-grid > .dm-card:not(.dm-medida):not(.is-open) > :is(.icon,.case-list,.dm-aviso,.dm-cred,.dm-btn,.dm-extras,.dm-video,.dm-video-tit,.dm-nota,.dm-medida-copy){display:none}
 .dm-grid > .dm-card:not(.dm-medida):not(.is-open) > :is(.dm-estado,.dm-para,h3,.dm-ver){margin-inline:1.1rem}
 .dm-grid > .dm-card:not(.dm-medida):not(.is-open) .dm-estado{position:absolute;top:.75rem;left:.75rem;z-index:1;margin:0;padding:.25rem .6rem;font-size:.72rem;background:color-mix(in srgb,var(--surface) 92%,transparent);box-shadow:var(--shadow)}
 .dm-grid > .dm-card:not(.dm-medida):not(.is-open) .dm-para{margin-top:1rem;margin-bottom:.4rem;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
@@ -262,6 +262,8 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
 .dm-col-izq .case-list{order:0;margin:0 0 1rem;padding:0}
 .dm-col-izq .dm-aviso{order:1}
 .dm-col-izq .dm-video{order:2}
+.dm-col-izq .dm-video-tit{order:3;margin:1.25rem 0 .5rem;font-weight:600;font-size:.95rem}
+.dm-col-izq .dm-video-2{order:4}
 .dm-col-izq .dm-aviso{margin:.25rem 0 1rem;padding:.6rem .8rem;border-radius:var(--radius-sm);background:var(--surface-2);font-size:.85rem;color:var(--muted)}
 .dm-col-izq .dm-video{position:static;width:100%;max-height:60dvh;object-fit:contain;margin:0;border:0;border-radius:var(--radius-sm);box-shadow:var(--shadow);background:#0b1220}
 .dm-col-der{padding:1.25rem;background:var(--surface-2);border-radius:var(--radius)}
@@ -483,6 +485,11 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
         <video class="dm-video" muted loop playsinline preload="none" poster="demo-vid/restaurante.jpg" aria-label="Video: cómo funciona la demo de restaurante">
           <source src="demo-vid/restaurante.webm" type="video/webm">
           <source src="demo-vid/restaurante.mp4" type="video/mp4">
+        </video>
+        <p class="dm-video-tit">Pago en caja con QR</p>
+        <video class="dm-video dm-video-2" muted loop playsinline preload="none" poster="demo-vid/pago_qr.jpg" aria-label="Video: pago en caja con QR en la demo de restaurante">
+          <source src="demo-vid/pago_qr.webm" type="video/webm">
+          <source src="demo-vid/pago_qr.mp4" type="video/mp4">
         </video>
         <span class="dm-estado">Demo guiada</span>
         <p class="dm-para">Restaurantes</p>
@@ -910,7 +917,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
     card.classList.add("is-open");
     card.removeAttribute("role"); card.removeAttribute("tabindex"); // dentro del modal no es botón: tiene botones propios
     dmDialog.appendChild(card);
-    var video = card.querySelector(".dm-video");
+    var cardVideos = card.querySelectorAll(".dm-video");
     var children = Array.prototype.slice.call(card.children);
     var icon = children.find(function(node){ return node.classList.contains("icon"); });
     var state = children.find(function(node){ return node.classList.contains("dm-estado"); });
@@ -939,7 +946,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
     dmBodyOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     dmDialog.showModal();
-    if (video && !dmReduced) video.play().catch(function(){});
+    if (!dmReduced) cardVideos.forEach(function(video){ video.play().catch(function(){}); });
     dmClose.focus();
   }
   document.querySelectorAll(".dm-grid > .dm-card:not(.dm-medida)").forEach(function(card){
@@ -981,8 +988,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
   dmDialog.addEventListener("close", function(){
     if (!dmActive) return;
     var card = dmActive;
-    var video = card.querySelector(".dm-video");
-    if (video) video.pause();
+    card.querySelectorAll(".dm-video").forEach(function(video){ video.pause(); });
     if (dmOriginalNodes) {
       dmOriginalNodes.forEach(function(node){ card.appendChild(node); });
       dmColumns.forEach(function(column){ column.remove(); });
