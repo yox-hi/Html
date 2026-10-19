@@ -445,7 +445,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
           <source src="demo-vid/inv.mp4" type="video/mp4">
         </video>
         <span class="dm-estado">Demo guiada</span>
-        <p class="dm-para">Colmados y ferreterías</p>
+        <p class="dm-para">Colmados</p>
         <h3>Inventario y caja</h3>
         <ul class="case-list">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Stock al día con cada venta y compra</li>
@@ -459,6 +459,28 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
           <div><dt>Clave</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
         </dl>
         <a class="btn btn-ghost dm-btn" data-wa="Hola, quiero ver la demo de Inventario y caja para mi colmado o ferretería." href="#">Pedir demo en vivo</a>
+      </article>
+      <article class="card dm-card reveal" data-demo="ferreteria">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7M12 11v10M7.5 5l9 4"/></svg></div>
+        <video class="dm-video" muted loop playsinline preload="none" poster="demo-vid/ferreteria.jpg" aria-label="Video: cómo funciona la demo de ferretería">
+          <source src="demo-vid/ferreteria.webm" type="video/webm">
+          <source src="demo-vid/ferreteria.mp4" type="video/mp4">
+        </video>
+        <span class="dm-estado">Demo guiada</span>
+        <p class="dm-para">Ferreterías</p>
+        <h3>Inventario y caja para ferretería</h3>
+        <ul class="case-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Venta por saco, varilla, galón o unidad</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Precios en RD$ con ITBIS incluido</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Factura electrónica (e-CF) con QR de la DGII</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Crédito fiscal para constructoras con su RNC</li>
+        </ul>
+        <p class="dm-aviso" hidden>Demo de solo lectura: los cambios no se guardan.</p>
+        <dl class="dm-cred" hidden>
+          <div><dt>Usuario</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
+          <div><dt>Clave</dt><dd><code></code><button class="dm-copy" type="button">Copiar</button></dd></div>
+        </dl>
+        <a class="btn btn-ghost dm-btn" data-wa="Hola, quiero ver la demo de Inventario y caja para mi ferretería." href="#">Pedir demo en vivo</a>
       </article>
       <article class="card dm-card reveal" data-demo="tienda">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.9-1.4L22 9H6"/><circle cx="10" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg></div>
@@ -779,6 +801,9 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
     inv:{url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/z2hiEs2q6knJnHLxHk8a/",usuario:"demo",clave:"DemoInventario2026",operador:{rol:"empleado",usuario:"cajero",clave:"DemoInventario2026"},
       extras:[{texto:"Vista gerente",url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/z2hiEs2q6knJnHLxHk8a/gerencia.php",usuario:"demo",clave:"DemoInventario2026",nota:"Resumen del negocio en vivo."},
               {texto:"Entrar como empleado",url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/z2hiEs2q6knJnHLxHk8a/",usuario:"cajero",clave:"DemoInventario2026"}]},
+    ferreteria:{url:"https://blue-alligator-306000.hostingersite.com/a/24QnREATCRwPyy2Eb74s/",usuario:"demo",clave:"DemoInventario2026",operador:{rol:"empleado",usuario:"cajero",clave:"DemoInventario2026"},
+      extras:[{texto:"Vista gerente",url:"https://blue-alligator-306000.hostingersite.com/a/24QnREATCRwPyy2Eb74s/gerencia.php",usuario:"demo",clave:"DemoInventario2026",nota:"Resumen de la ferretería en vivo."},
+              {texto:"Entrar como empleado",url:"https://blue-alligator-306000.hostingersite.com/a/24QnREATCRwPyy2Eb74s/",usuario:"cajero",clave:"DemoInventario2026"}]},
     tienda:{url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/tD7mQ2vN9aK4xR6pL8cB/",usuario:"demo",clave:"DemoTienda2026",
       extras:[{texto:"Entrar al panel admin",url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/tD7mQ2vN9aK4xR6pL8cB/J93zqVPK75h8",nota:"Usa el usuario y la clave de arriba."}]},
     restaurante:{url:"https://w8e6nbsoo2.hdx0wdwe3.workers.dev/a/rM5wY8hC3nF2qJ7zA9eP/",usuario:"demo",clave:"DemoMesa2026",
