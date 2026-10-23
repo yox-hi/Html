@@ -294,6 +294,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
 .about-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .about .cta-row{margin-top:1.5rem}
 .about-cert{margin-top:1.5rem}
+.about-cert a{color:var(--accent-strong);font-weight:600}
 .resultados{margin-bottom:1.25rem}
 .price{position:relative}
 .badge-launch{background:var(--accent-soft);color:var(--accent-strong);border:1px solid var(--accent)}
@@ -659,7 +660,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
         <a class="btn btn-ghost" id="btnCv" href="#" download hidden>Descargar CV</a>
       </div>
       <div class="about-cert" id="certBloque" hidden>
-        <h3>Certificados</h3>
+        <h3>Certificados y reconocimientos</h3>
         <ul class="case-list" id="certLista"></ul>
       </div>
     </div>
@@ -935,7 +936,12 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
     email: "",             // correo de contacto
     libro: "",             // URL de tu Libro de Reclamaciones virtual
     cv: "",                // ruta del PDF, p. ej. "cv/CV-Yoshio.pdf" (sube el archivo al repo)
-    certificados: [],      // p. ej. ["Nombre del certificado · Institución · 2024"]
+    certificados: [
+      {texto: "Cisco Networking Academy · IT Essentials · certificado de finalización (2019)", url: "certificados/cisco-it-essentials-certificado.pdf"},
+      {texto: "Cisco · carta de finalización del curso IT Essentials (2018)", url: "certificados/cisco-it-essentials-carta.pdf"},
+      {texto: "Premio a la excelencia (優秀賞) · 株式会社為我井製作所 · ejercicio 2024", url: "certificados/premio-excelencia-2024.jpg"},
+      {texto: "Premio a la excelencia (優秀賞) · 株式会社為我井製作所 · ejercicio 2023", url: "certificados/premio-excelencia-2023.jpg"}
+    ],
     resultados: []         // p. ej. [{dato:"3 h → 20 min", texto:"Cierre de caja semanal", fuente:"JP Online"}]
   };
   var legal = [];
@@ -947,7 +953,12 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
   if (DATOS.cv) { var bc = document.getElementById("btnCv"); bc.href = DATOS.cv; bc.hidden = false; }
   if (DATOS.certificados.length) {
     var cl = document.getElementById("certLista");
-    DATOS.certificados.forEach(function(c){ var li = document.createElement("li"); li.textContent = c; cl.appendChild(li); });
+    DATOS.certificados.forEach(function(c){
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.textContent = c.texto; a.href = c.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+      li.appendChild(a); cl.appendChild(li);
+    });
     document.getElementById("certBloque").hidden = false;
   }
   if (DATOS.resultados.length) {
