@@ -351,7 +351,6 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
     <ul class="nav-links">
       <li><a href="#casos">Casos</a></li>
       <li><a href="#demos">Demos</a></li>
-      <li><a href="#sobre-mi">Sobre mí</a></li>
       <li><a href="#problema">El problema</a></li>
       <li><a href="#como">Cómo funciona</a></li>
       <li><a href="#precios">Precios</a></li>
@@ -644,29 +643,6 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
   </div>
 </section>
 
-<!-- SOBRE MÍ: sube tu foto como img/yoshio.webp; mientras no exista se ve la inicial. -->
-<section id="sobre-mi">
-  <div class="wrap about reveal">
-    <div class="about-photo">
-      <span aria-hidden="true">Y</span>
-      <img src="img/yoshio.webp" alt="Foto de Yoshio" width="176" height="176" loading="lazy" onerror="this.remove()">
-    </div>
-    <div>
-      <h2>Quién está detrás de Kaizen Studio</h2>
-      <p class="sub">Soy <strong>Yoshio</strong>. Trabajé 13 años en manufactura japonesa, donde el Kaizen no es un eslogan sino la forma de trabajar todos los días. Hoy llevo esa disciplina a los negocios de República Dominicana: mido cuánto tarda una tarea, la simplifico, la automatizo y la sigo mejorando.</p>
-      <p class="sub">Los sistemas que ves arriba los construí yo y los mantengo yo. Cuando me escribes por WhatsApp, hablas directamente conmigo.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" data-wa="Hola Yoshio, vi tu página de Kaizen Studio y quiero conversar." href="#">Hablar conmigo</a>
-        <a class="btn btn-ghost" id="btnCv" href="#" download hidden>Descargar CV</a>
-      </div>
-      <div class="about-cert" id="certBloque" hidden>
-        <h3>Certificados y reconocimientos</h3>
-        <ul class="case-list" id="certLista"></ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- PROBLEMA -->
 <section class="problem alt" id="problema">
   <div class="wrap">
@@ -935,13 +911,6 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
     ruc: "",               // RUC (o DNI si aún no tienes RUC)
     email: "",             // correo de contacto
     libro: "",             // URL de tu Libro de Reclamaciones virtual
-    cv: "cv/CV-Yoshio-Hiromitsu.pdf",                // ruta del PDF, p. ej. "cv/CV-Yoshio.pdf" (sube el archivo al repo)
-    certificados: [
-      {texto: "Cisco Networking Academy · IT Essentials · certificado de finalización (2019)", url: "certificados/cisco-it-essentials-certificado.pdf"},
-      {texto: "Cisco · carta de finalización del curso IT Essentials (2018)", url: "certificados/cisco-it-essentials-carta.pdf"},
-      {texto: "Premio a la excelencia (優秀賞) · 株式会社為我井製作所 · ejercicio 2024", url: "certificados/premio-excelencia-2024.jpg"},
-      {texto: "Premio a la excelencia (優秀賞) · 株式会社為我井製作所 · ejercicio 2023", url: "certificados/premio-excelencia-2023.jpg"}
-    ],
     resultados: []         // p. ej. [{dato:"3 h → 20 min", texto:"Cierre de caja semanal", fuente:"JP Online"}]
   };
   var legal = [];
@@ -950,17 +919,6 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
   if (legal.length) { var t = document.getElementById("pieTitular"); t.textContent = legal.join(" · "); t.hidden = false; }
   if (DATOS.email) { var e = document.getElementById("pieEmail"); e.href = "mailto:" + DATOS.email; e.textContent = DATOS.email; e.parentNode.hidden = false; }
   if (DATOS.libro) { var l = document.getElementById("pieLibro"); l.href = DATOS.libro; l.parentNode.hidden = false; }
-  if (DATOS.cv) { var bc = document.getElementById("btnCv"); bc.href = DATOS.cv; bc.hidden = false; }
-  if (DATOS.certificados.length) {
-    var cl = document.getElementById("certLista");
-    DATOS.certificados.forEach(function(c){
-      var li = document.createElement("li");
-      var a = document.createElement("a");
-      a.textContent = c.texto; a.href = c.url; a.target = "_blank"; a.rel = "noopener noreferrer";
-      li.appendChild(a); cl.appendChild(li);
-    });
-    document.getElementById("certBloque").hidden = false;
-  }
   if (DATOS.resultados.length) {
     var rc = document.getElementById("resultados");
     DATOS.resultados.forEach(function(r){
