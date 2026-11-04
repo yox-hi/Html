@@ -907,13 +907,13 @@ footer{border-top:1px solid var(--line);padding:2rem 0 5.5rem;color:var(--muted)
   // Datos legales del pie: completa y se muestran solos (vacío = oculto).
   var DATOS = {
     titular: "",           // nombre completo o razón social
-    ruc: "",               // RUC (o DNI si aún no tienes RUC)
+    rnc: "",               // RNC (o cédula si aún no tienes RNC)
     email: "",             // correo de contacto
     resultados: []         // p. ej. [{dato:"3 h → 20 min", texto:"Cierre de caja semanal", fuente:"JP Online"}]
   };
   var legal = [];
   if (DATOS.titular) legal.push(DATOS.titular);
-  if (DATOS.ruc) legal.push("RUC " + DATOS.ruc);
+  if (DATOS.rnc) legal.push("RNC " + DATOS.rnc);
   if (legal.length) { var t = document.getElementById("pieTitular"); t.textContent = legal.join(" · "); t.hidden = false; }
   if (DATOS.email) { var e = document.getElementById("pieEmail"); e.href = "mailto:" + DATOS.email; e.textContent = DATOS.email; e.parentNode.hidden = false; }
   if (DATOS.resultados.length) {
